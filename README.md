@@ -39,11 +39,11 @@ Bir oyun alanında bunlardan çok sayıda olabilir. Bu tür alanlarda genellikle
 
 ## Sockete-IO Ağı Sistem Bileşenleri :
 ### 1- Kartlı sistem jeton kanalı yükleme cihazı (PIC24F)
-### 2- Kartlı sistem jeton kanalları (PIC24F) [Çalışma Videosu ...](https://www.youtube.com/watch?v=HQXXSq4kj5s)
+### 2- Kartlı sistem jeton kanalları (PIC24F) [Video ...](https://www.youtube.com/watch?v=HQXXSq4kj5s)
 ### 3- Oyun alanı yönetim programı V3. (C#)
-### 4- Node-JS local server ve socket-io. [github link](https://github.com/ilyas9461/yoy-io-server-local)
-### 5- Server program (c#)[github link](https://github.com/ilyas9461/YOY-Socket-ServerV1)
-### 6- Web tarafında çalışan uzak server Node-JS ve Socket-io [github link](https://github.com/ilyas9461/yoy-io-server-cloud)
+### 4- Node-JS local server ve socket-io. [yoy-io-server-local](https://github.com/ilyas9461/yoy-io-server-local)
+### 5- Server program (c#)[YOY-Socket-ServerV1](https://github.com/ilyas9461/YOY-Socket-ServerV1)
+### 6- Web tarafında çalışan uzak server Node-JS ve Socket-io [yoy-io-server-cloud ](https://github.com/ilyas9461/yoy-io-server-cloud)
 ### 7- VUE3 ile hazırlanmış Dashboard.
 ### 8- Wireless modüller (ESP8266) [socket-io-study](https://github.com/ilyas9461/iot-study)
 
@@ -55,7 +55,7 @@ Sistem mimarisi belirlenirken internet bağlantısının kopması gibi durumlard
 
 
 <p  align="center">
-<img src="img/iot_donanim.jpg" alt="pelus" width="400" style="margin-left:10px">
+<img src="img/system-structure.png" alt="pelus" width="400" style="margin-left:10px">
 </p>
 
 Server kısmında ;
