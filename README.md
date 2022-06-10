@@ -41,11 +41,11 @@ Bir oyun alanında bunlardan çok sayıda olabilir. Bu tür alanlarda genellikle
 ### 1- Kartlı sistem jeton kanalı yükleme cihazı (PIC24F)
 ### 2- Kartlı sistem jeton kanalları (PIC24F) [Çalışma Videosu ...](https://www.youtube.com/watch?v=HQXXSq4kj5s)
 ### 3- Oyun alanı yönetim programı V3. (C#)
-### 4- Node-JS local server ve socket-io. 
-### 5- Server program (c#)
-### 6- Web tarafında çalışan uzak server Node-JS ve Socket-io
+### 4- Node-JS local server ve socket-io. [github link](https://github.com/ilyas9461/yoy-io-server-local)
+### 5- Server program (c#)[github link](https://github.com/ilyas9461/YOY-Socket-ServerV1)
+### 6- Web tarafında çalışan uzak server Node-JS ve Socket-io [github link](https://github.com/ilyas9461/yoy-io-server-cloud)
 ### 7- VUE3 ile hazırlanmış Dashboard.
-### 8- Wireless modüller (ESP8266)
+### 8- Wireless modüller (ESP8266) [socket-io-study](https://github.com/ilyas9461/iot-study)
 
 ## Çalışma Şekli
 ## Bölüm 1 : Kart Bilgilerinin Yerel ve Uzak Birimler Tarafından Paylaşılması:
