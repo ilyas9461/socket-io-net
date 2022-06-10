@@ -37,7 +37,7 @@ Büyük bir oyun alanında bulunabilecek bazı oyun alanı yapılarını şu şe
 Bir oyun alanında bunlardan çok sayıda olabilir. Bu tür alanlarda genellikle müşteriler temassız karta yüklenen kontür ile bir oyuncağı çalıştırır veya bir oyun alanına giriş yaparlar. Geliştirmiş olduğumuz sistemimiz özetle bu oyun alanlarında farklı fiyat-süre seçeneklerini müşteriye sunarak müşterinin oyun alanında kalma süresini takip etmektedir. Aynı zamanda bütün ödemeleri temassız karta yüklenen kontürleden almaktadır. Dolayısıyla temassız kartlar sistemin en önemli bileşenidir. Bu alt yapıya entegre ettiğimiz yeni özelliklerle de sistem bileşenleri şu şeklide olmaktadır;
 
 <p  align="center">
-<img src="img/system-structure.png" alt="pelus" width="75%" style="margin-left:10px">
+<img src="img/system-structure.png" alt="pelus" width="100%" style="margin-left:10px">
 </p>
 
 ## Sockete-IO Ağı Sistem Bileşenleri :
