@@ -54,77 +54,17 @@ Bir oyun alanında bunlardan çok sayıda olabilir. Bu tür alanlarda genellikle
 ## Bölüm 1 : Kart Bilgilerinin Yerel ve Uzak Birimler Tarafından Paylaşılması:
 Büyük bir oyun alanında ortalama haftalık ziyaretçi sayısı 1000-5000 arasında değişebilmektedir. Yoğun zamanlarda bir alana birden fazla PC konulabilmektedir. Örneğin iki veya daha fazla kart yükleme noktası oluşturduğunuz zaman kartların deposito durumları PC'ler arasında paylaşılmazsa PC'ler arasında kartlar birbirine karışmaktadır. Çok yoğun bir zamanda müşteriye ait bilgilerin her alanda tekrar takip programına girilmesi kuyrukların oluşmasına sebep olmaktadır. Kartlarda meydana gelen çeşitli arızaların (kontür silinmesi, oyuncağın kontürü çekip çalışmaması vb.) hangi alanda yada oyuncakta ne zaman meydana geldiğinin tespiti telafi yüklemelerinde işletmeci açısından önem arzetmektedir. Ayrıca işletmeci bir AVM ile anlaştı ise AVM işletmeciye farklı noktalarda yerler verebilmektedir. Bu durumda da kart bilgilerinin paylaşılabilir olması müşteri memnuniyeti ve artması için önemli hale gelmektedir. Bu sistemle kartlar için siyah liste oluşturulabilir ve kartın kullanımı sistemden kaldıralılabilir. Böylelikle kayıp-çalıntı kartın kullanımının da önüne geçilebilir.
 
-Sistem mimarisi belirlenirken internet bağlantısının kopması gibi durumlarda düşünülmüştür. Her birimdeki PC verilerini hem kendisine hem de yerelde server PC olarak belirlenen PC'deki veri tabanına kaydetmektedir. Yerelde sistem modem aktif olduğu müddetçe internet bağlantısı olmasa bile kendi içersinde çalışabilmektedir. Birimlerde çalışan programlar web'e veri atarken bir takım gecikme sorunları oabilmekteyken,  programların verileri sadece kendilerine ve yerel server PC'deki veri tabanına atmalarının sağlanması ile de sistem çalışma hızı artmıştır. Server PC'de çalışan yerel server program yerel ağ ile web arasında köprü gibi çalışmaktadır. Her bir birimdeki program yapılan işleme bağlı olarak server PC'de çalışan node-js socket-io server'a belirlenen port üzerinden olay tabanlı bildirimler göndermektedir. Server PC'de çalışan server programda bu bildirimlere abone durumdadır. Gelen olay ve verisine göre gerekli işlemleri yapmaktadır. Olay-veriler socket-io yapısı üzerinden dolaşmaktadır. Web veri tabanına server program verileri göndermektedir. Böylelikle oluşabilecek birtakım güvenlik sorunlarının da önüne geçilmiştir. Başka bie internet bağlantısı üzerinden sisteme dahil olan birimler ise olay-verilerini web de çalışan node-js socket-io server'a göndermektedir. Bu programlar aynı zamanda direkt olarak web veri tabanına veri gönderebilmektedirler. Yerel de çalışan servre program web de bulunan socket-io server bildirimlerine de üye durumdadır. Köprü görevini işte bu şekilde görür. Yerel deki olayları aynı zaman da web'e, web'deki olayları da yerele yayınlar. Bu şekilde verilerin iki yönlü paylaşımı sağlanmış olur.
+Sistem mimarisi belirlenirken internet bağlantısının kopması gibi durumlarda düşünülmüştür. Her birimdeki PC verilerini hem kendisine hem de yerelde server PC olarak belirlenen PC'deki veri tabanına kaydetmektedir. Yerelde sistem modem aktif olduğu müddetçe internet bağlantısı olmasa bile kendi içersinde çalışabilmektedir. Birimlerde çalışan programlar web'e veri atarken bir takım gecikme sorunları olabilmekteyken,  programların verileri sadece kendilerine ve yerel server PC'deki veri tabanına atmalarının sağlanması ile de sistem çalışma hızı artmıştır. Server PC'de çalışan yerel server program yerel ağ ile web arasında köprü gibi çalışmaktadır. Her bir birimdeki program yapılan işleme bağlı olarak server PC'de çalışan node-js socket-io server'a belirlenen port üzerinden olay tabanlı bildirimler göndermektedir. Server PC'de çalışan server programda bu bildirimlere abone durumdadır. Gelen olay ve verisine göre gerekli işlemleri yapmaktadır. Olay-veriler socket-io yapısı üzerinden dolaşmaktadır. Web veri tabanına server program verileri göndermektedir. Böylelikle oluşabilecek birtakım güvenlik sorunlarının da önüne geçilmiştir. Başka bir internet bağlantısı üzerinden sisteme dahil olan birimler ise olay-verilerini web de çalışan node-js socket-io server'a göndermektedir. Bu programlar aynı zamanda direkt olarak web veri tabanına veri gönderebilmektedirler. Yerel de çalışan server program web de bulunan socket-io server bildirimlerine de üye durumdadır. Köprü görevini işte bu şekilde görür. Yerel deki olayları aynı zaman da web'e, web'deki olayları da yerele yayınlar. Bu şekilde verilerin iki yönlü paylaşımı sağlanmış olur.
 
-Server kısmında ;
-
-- Node js Express
-- Socket io versiyon 4
-
-İstemci kısmında 
-
-- Vue3 Composition Api
-
-### Test Çalışmaları
-Testler yerel server ve bir gsm firmasının superbox adı verilen wifi modemi ile yapılmıştır.
-Farklı modem modellerinde özellikle mesafe ile ilgili sonuçlar benzer olmayabilir.
-
-### 1- Bağlantı Mesafesi
-Donanım 12V bir aküye bağlanarak yaklaşık 900 metre kare ve kare şeklinde iki katlı, alt ve üst katta duvarlarla bölünmüş alanların ve kolonların  bulunduğu bir üretim atölyesinde dip noktalar dahil her noktaya ve bahçeye gidilerek bağlantı durumu gözlenmiştir.
-
-Bu alanda bağlantının kopmadığı görülmüştür.  
-
-Sonrasında ise dışarıya çıkılarak binadan  uzaklşılmış yaklaşık 50m mesafede bağlantının koptuğu gözlenmiştir. 
-
-Yapılan saha çalışmasında cep telefonunun kablosuz modemi gördüğü her noktada iletişimin sağlandığı sonucuna varılmıştır. 
-(Dikkat, cep telefonu modeline göre de değişiklik olabilir.)
-
-### 2- Veri Gönderme Hızı
-
-Socket io bağlantısına gönderilecek verilerin minumum zaman aralığındaki durumu tespit edilmeye çalışılmıştır. Burada amacımız iki veri arasındaki minumum zaman  ve bu veriler veri tabanına kaydedilirken veya gönderilirken bir kayıp oluyor mu tespit etmektir.
-
-Bunun için Node mcu içersindeki yazılım düzenlemiş ve TESTING isimli bir sabit oluşturularak sistem test aşamasına alınmıştır. Infrared yakınlık sensörü kod yapısı teste göre düzenlenerek sensörün tetiklenmmesi ile veriler gönderilmiştir.. Veri yapısı şu şekildedir ;
-
-<p  align="center">
-<img src="img/test_veri_yapisi.png" alt="pelus" width="300" style="margin-left:10px">
-</p>
-
-Zaman damgası ve örnek data sayısı da eklenerek kayıp veri kontrolü yapılması sağlanmıştır. Node mcu sensör tetiklendiğinde sadece bu veriyi json formatına çevirerek göndermektedir. Gecikmeler işlemleri gerçekleştiren  fonksiyonların gecikmesidir.
-
-Cihaz resetlenerek 30 saniye süre ile sensör tetiklenmiştir. Elde edilen sonuçlar şu şekildedir :
-
-<p  align="center">
-<img src="img/test_db_ms1.png" alt="pelus" width="400" style="margin-left:10px">
-<img src="img/test_db_ms2.png" alt="pelus" width="400" style="margin-left:10px">
-</p>
-
-- Veri tabanına yazılan satır sayısı :6162
-- Son veri zaman damgası: 84961 mS
-- ilk veri zaman damgası: 56434 mS
-
-- Buna göre :(81063-49767)/6162  =4.629 mS 
-
-Yapılan incelemede verilerin hepsinin sıra atlamadan veri tabanınada yazıldığı görülmüştür.
-
-### Bazı Ekran Görüntüleri
-<br>
-<p  align="center">
-<img src="img/istemci1.png" alt="pelus" width="425" style="margin-left:10px">
-<img src="img/istemci.png" alt="pelus" width="400" style="margin-left:10px">
-</p>
-<br><br>
-<p  align="center">
-<img src="img/server_kod.png" alt="pelus" width="400" tyle="margin-left:10px">
-<img src="img/vue3_kod.png" alt="pelus" width="400" style="margin-left:10px">
-</p>
 
 ## Kullanılan Teknolojiler
 
 ```bash
-- NOde MCU ESP-12E.
-- Node js, Expres, socket io ...
-- Vue3 Composition APi
-- PostgreSQL
+- C#, SocketIOClient
+- Node js, Expres, socket-io 4.x
+- MySql
+- PICC, PIC24F
+- ESP8266
 
 ```
 
