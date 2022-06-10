@@ -23,7 +23,7 @@ Bu çalışmada oyun alanlarında kullanılmak üzere basit bir ağ yapısı üz
 - Birimlere müşteri kaydının web ve mobil üzerinden yapılabilmesinin sağlanması.
 - Web üzerinden oyuncakların uzaktan çalıştırılmasının sağlanması.
 
-Bu sistem daha önce çalıştığımız ve şu anda piyasada kullanılmakta olan [Yoyuncak Oyun Alanı Yönetim Sistemi](#https://github.com/ilyas9461/yoy-yon-sistemi) (V2) üzerine inşa edilmiştir. 
+Bu sistem daha önce çalıştığımız ve şu anda piyasada kullanılmakta olan [Yoyuncak Oyun Alanı Yönetim Sistemi](https://github.com/ilyas9461/yoy-yon-sistemi) (V2) üzerine inşa edilmiştir. 
 
 Büyük bir oyun alanında bulunabilecek bazı oyun alanı yapılarını şu şekilde listeleyebiliriz:
 - Soft Alanlar : Bunlar top havuzları ve kum havuzları olabilir
