@@ -14,7 +14,7 @@
 
 Bu çalışmada oyun alanlarında kullanılmak üzere basit bir socket-io ağ yapısı üzerinde durulmuştur. Bu yapıyla bir oyun alanında kullanılan temassız kartlara ait çeşitli bilgilerin oyun alanındaki bütün birimler tarafından ağ üzerinden paylaşılması ve oyun  alanındaki tüm birimler ile oyuncakların web den erişileibilir (IOT) olması amaçlanmıştır. Büyük bir oyun alanında iki ana eğlence alanından bahsedebiliriz:
 - Oyuncaklar, bireysel olarak kulanılan ve temassız kart okuyucu ile aktif edilebilen çok çeşitli gruplardır. 
-- Birimler olarak tanımladığımız kısım ise, genel olarak soft alanlar olarak adlandırılır ve birden fazla kişinin aynı anda yararlandığı eğlenme yerleridir. Her birimde bir PC bulunur ve üzerinde çalışan program vasıtasıyla birimlere müşteriler temassız kart, nakit ve kredi kartı ödeme seçenekleri ile kabul edilirler. Bu program ayrıca müşterilerin birimde kalma sürelerini de takip ederek çeşitli seçenekler sunar. Günsonunda günlük ciro, masraflar, misafir sayıları vb. konularda raporlama sunarken yaptığı bütün işlemleri web veri tabanına da kaydeder. BÖylece web tarafından anlık ciro vb bilgiler görüntülenebilir. Ayrıntılı bilgi için; [Yoyuncak Oyun Alanı Yönetim Sistemi](https://github.com/ilyas9461/yoy-yon-sistemi) 
+- Birimler olarak tanımladığımız kısım ise, genel olarak soft alanlar olarak adlandırılır ve birden fazla kişinin aynı anda yararlandığı eğlenme yerleridir. Her birimde bir PC bulunur ve üzerinde çalışan program vasıtasıyla birimlere müşteriler temassız kart, nakit ve kredi kartı ödeme seçenekleri ile kabul edilirler. Bu program ayrıca müşterilerin birimde kalma sürelerini de takip ederek çeşitli seçenekler sunar. Günsonunda günlük ciro, masraflar, misafir sayıları vb. konularda raporlama sunarken yaptığı bütün işlemleri web veri tabanına da kaydeder. Böylece web tarafından anlık ciro vb bilgiler görüntülenebilir. Ayrıntılı bilgi için; [Yoyuncak Oyun Alanı Yönetim Sistemi](https://github.com/ilyas9461/yoy-yon-sistemi) 
 
 Bu durumda genel olarak hedeflerimizi şu şekilde ifade edebiliriz:<br>
 
@@ -73,7 +73,7 @@ Sistem mimarisi belirlenirken internet bağlantısının kopması gibi durumlard
 
 ###  Örnek çalışma videosu :
 
-<a href="https://youtu.be/AQEl6YUnvLM" target="_blank">
+<a href="https://youtu.be/RWEq8n_fpZ4" target="_blank">
      <img src="https://camo.githubusercontent.com/241d4106ff5edca2ee25e04dcf4546fad9d20b626f7a10990307e8f83e95459f/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f796f75747562652d2532334646303030302e7376673f267374796c653d666f722d7468652d6261646765266c6f676f3d796f7574756265266c6f676f436f6c6f723d7768697465253232" alt="youtube">
 </a>
 
