@@ -12,29 +12,32 @@
 
 ## Giriş
 
-Bu çalışmada oyun alanlarında kullanılmak üzere basit bir ağ yapısı üzerinde çalışılmıştır. Bu yapıyla bir oyun alanında kullanılan temassız kartlara ait çeşitli bilgilerin oyun alanındaki bütün birimler tarafından ağ üzerinden paylaşılması ve oyun  alanındaki tüm birimler ile oyuncakların web den erişileibilir(IOT) olması amaçlanmıştır. Bu durumda hedeflerimiz şu şekilde ifade edebiliriz ;
-<br><br>
+Bu çalışmada oyun alanlarında kullanılmak üzere basit bir socket-io ağ yapısı üzerinde durulmuştur. Bu yapıyla bir oyun alanında kullanılan temassız kartlara ait çeşitli bilgilerin oyun alanındaki bütün birimler tarafından ağ üzerinden paylaşılması ve oyun  alanındaki tüm birimler ile oyuncakların web den erişileibilir (IOT) olması amaçlanmıştır. Büyük bir oyun alanında iki ana eğlence alanından bahsedebiliriz:
+- Oyuncaklar, bireysel olarak kulanılan ve temassız kart okuyucu ile aktif edilebilen çok çeşitli gruplardır. 
+- Birimler olarak tanımladığımız kısım ise, genel olarak soft alanlar olarak adlandırılır ve birden fazla kişinin aynı anda yararlandığı eğlenme yerleridir. Her birimde bir PC bulunur ve üzerinde çalışan program vasıtasıyla birimlere müşteriler temassız kart, nakit ve kredi kartı ödeme seçenekleri ile kabul edilirler. Bu program ayrıca müşterilerin birimde kalma sürelerini de takip ederek çeşitli seçenekler sunar. Günsonunda günlük ciro, masraflar, misafir sayıları vb. konularda raporlama sunarken yaptığı bütün işlemleri web veri tabanına da kaydeder. BÖylece web tarafından anlık ciro vb bilgiler görüntülenebilir. Ayrıntılı bilgi için; [Yoyuncak Oyun Alanı Yönetim Sistemi](https://github.com/ilyas9461/yoy-yon-sistemi) 
 
+Bu durumda genel olarak hedeflerimizi şu şekilde ifade edebiliriz:<br>
 
-- Oyun alanındaki tüm birimler tarafından temassız kart bilgilerinin paylaşılması.
+- Oyun alanındaki tüm birimler ve oyuncaklar tarafından temassız kart bilgilerinin paylaşılması.
 - Temassız kartın müşteri bilgilerinin tüm birimler tarafından paylaşılması.
+- Tüm birimlerde yapılan işlemlerin ağ üzerinde anlık olarak gözlenebilmesi.
 - Web üzerinden tüm birimlerdeki işlemlerin anlık takibi.
-- Web üzerinden oyuncaklar ve üniteler ile ilgili çeşitli ayarların yapılması.
+- Web-yerel üzerinden oyuncaklar ve üniteler ile ilgili çeşitli ayarların uzaktan yapılması.
 - Birimlere müşteri kaydının web ve mobil üzerinden yapılabilmesinin sağlanması.
-- Web üzerinden oyuncakların uzaktan çalıştırılmasının sağlanması.
+- Web-yerel üzerinden oyuncakların uzaktan çalıştırılmasının sağlanması.
 
-Bu sistem daha önce çalıştığımız ve şu anda piyasada kullanılmakta olan [Yoyuncak Oyun Alanı Yönetim Sistemi](https://github.com/ilyas9461/yoy-yon-sistemi) (V2) üzerine inşa edilmiştir. 
+Bu sistem daha önce çalıştığımız ve şu anda piyasada çeşitli yerlerdeki (11 farklı oyun alanı ve yaklaşık 25 PC'de) oyun alanlarında kullanılmakta olan [Yoyuncak Oyun Alanı Yönetim Sistemi](https://github.com/ilyas9461/yoy-yon-sistemi) (V2) üzerine inşa edilmiştir. 
 
-Büyük bir oyun alanında bulunabilecek bazı oyun alanı yapılarını şu şekilde listeleyebiliriz:
-- Soft Alanlar : Bunlar top havuzları ve kum havuzları olabilir
+Büyük bir oyun alanında bulunabilecek bazı oyun alanı eğelence merkezlerini şu şekilde listeleyebiliriz:
+- Soft Alanlar : Bunlar çeşitli büyüklükteki top havuzları ve kum havuzları olabilir
 - Kiddy Rides oyuncaklar : Çocuklara hitap eden oyuncaklardır.
 - Ekranlı Oyuncaklar : Bir PC üzeride çalışabilen oyuncaklardır.
-- Peluş oyuncaklar
+- Peluş oyuncaklar.
 - Tırmanma duvarları.
 - Akülü arabalar, çarpışan arabalar.
 - ...
 
-Bir oyun alanında bunlardan çok sayıda olabilir. Bu tür alanlarda genellikle müşteriler temassız karta yüklenen kontür ile bir oyuncağı çalıştırır veya bir oyun alanına giriş yaparlar. Geliştirmiş olduğumuz sistemimiz özetle bu oyun alanlarında farklı fiyat-süre seçeneklerini müşteriye sunarak müşterinin oyun alanında kalma süresini takip etmektedir. Aynı zamanda bütün ödemeleri temassız karta yüklenen kontürleden almaktadır. Dolayısıyla temassız kartlar sistemin en önemli bileşenidir. Bu alt yapıya entegre ettiğimiz yeni özelliklerle de sistem bileşenleri şu şeklide olmaktadır;
+Bir oyun alanında bunlardan çok sayıda olabilir. Bu tür alanlarda genellikle müşteriler temassız karta yüklenen kontür ile bir oyuncağı çalıştırır veya bir oyun alanına giriş yaparlar. Geliştirmiş olduğumuz sistemimiz özetle bu oyun alanlarında farklı fiyat-süre seçeneklerini müşteriye sunarak müşterinin oyun alanında kalma süresini takip etmektedir. Aynı zamanda bütün ödemeleri temassız karta yüklenen kontürleden veya nakit-kredi kartı üzerinden alabilmektedir. Genel olarak bir veya daha fazla kart yükleme noktsından temassız kartlar kontur yüklenmekte ve diğer yerlerde bu temassız kartlar kullanılmaktadır. Dolayısıyla temassız kartlar sistemin en önemli bileşenidir. Bu alt yapıya entegre ettiğimiz yeni özelliklerle de sistem bileşenleri şu şeklide olmaktadır;
 
 <p  align="center">
 <img src="img/system-structure.png" alt="pelus" width="100%" style="margin-left:10px">
