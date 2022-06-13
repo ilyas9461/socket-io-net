@@ -12,7 +12,7 @@
 
 ## Giriş
 
-Bu çalışmada oyun alanlarında kullanılmak üzere basit bir socket-io ağ yapısı üzerinde durulmuştur. Bu yapıyla bir oyun alanında kullanılan temassız kartlara ait çeşitli bilgilerin oyun alanındaki bütün birimler tarafından ağ üzerinden paylaşılması ve oyun  alanındaki tüm birimler ile oyuncakların web den erişileibilir (IOT) olması amaçlanmıştır. Büyük bir oyun alanında iki ana eğlence alanından bahsedebiliriz:
+Bu çalışmada oyun alanlarında kullanılmak üzere bir socket-io ağ yapısı üzerinde durulmuştur. Bu yapıyla bir oyun alanında kullanılan temassız kartlara ait çeşitli bilgilerin oyun alanındaki bütün birimler tarafından ağ üzerinden paylaşılması ve oyun  alanındaki tüm birimler ile oyuncakların web den erişileibilir (IOT) olması amaçlanmıştır. Büyük bir oyun alanında iki ana eğlence alanından bahsedebiliriz:
 - Oyuncaklar, bireysel olarak kulanılan ve temassız kart okuyucu ile aktif edilebilen çok çeşitli gruplardır. 
 - Birimler olarak tanımladığımız kısım ise, genel olarak soft alanlar olarak adlandırılır ve birden fazla kişinin aynı anda yararlandığı eğlenme yerleridir. Her birimde bir PC bulunur ve üzerinde çalışan program vasıtasıyla birimlere müşteriler temassız kart, nakit ve kredi kartı ödeme seçenekleri ile kabul edilirler. Bu program ayrıca müşterilerin birimde kalma sürelerini de takip ederek çeşitli seçenekler sunar. Günsonunda günlük ciro, masraflar, misafir sayıları vb. konularda raporlama sunarken yaptığı bütün işlemleri web veri tabanına da kaydeder. Böylece web tarafından anlık ciro vb bilgiler görüntülenebilir. Ayrıntılı bilgi için; [Yoyuncak Oyun Alanı Yönetim Sistemi](https://github.com/ilyas9461/yoy-yon-sistemi) 
 
@@ -59,6 +59,8 @@ Büyük bir oyun alanında ortalama haftalık ziyaretçi sayısı 1000-5000 aras
 
 Sistem mimarisi belirlenirken internet bağlantısının kopması gibi durumlarda düşünülmüştür. Her birimdeki PC verilerini hem kendisine hem de yerelde server PC olarak belirlenen PC'deki veri tabanına kaydetmektedir. Yerelde sistem modem aktif olduğu müddetçe internet bağlantısı olmasa bile kendi içersinde çalışabilmektedir. Birimlerde çalışan programlar web'e veri atarken bir takım gecikme sorunları olabilmekteyken,  programların verileri sadece kendilerine ve yerel server PC'deki veri tabanına atmalarının sağlanması ile de sistem çalışma hızı artmıştır. Server PC'de çalışan yerel server program yerel ağ ile web arasında köprü gibi çalışmaktadır. Her bir birimdeki program yapılan işleme bağlı olarak server PC'de çalışan node-js socket-io server'a belirlenen port üzerinden olay tabanlı bildirimler göndermektedir. Server PC'de çalışan server programda bu bildirimlere abone durumdadır. Gelen olay ve verisine göre gerekli işlemleri yapmaktadır. Olay-veriler socket-io yapısı üzerinden dolaşmaktadır. Web veri tabanına server program verileri göndermektedir. Böylelikle oluşabilecek birtakım güvenlik sorunlarının da önüne geçilmiştir. Başka bir internet bağlantısı üzerinden sisteme dahil olan birimler ise olay-verilerini web de çalışan node-js socket-io server'a göndermektedir. Bu programlar aynı zamanda direkt olarak web veri tabanına veri gönderebilmektedirler. Yerel de çalışan server program web de bulunan socket-io server bildirimlerine de üye durumdadır. Köprü görevini işte bu şekilde görür. Yerel deki olayları aynı zaman da web'e, web'deki olayları da yerele yayınlar. Bu şekilde verilerin iki yönlü paylaşımı sağlanmış olur.
 
+## Bölüm 2: Oyuncakların Ağa Dahil Edilmesi:
+... ...
 
 ## Kullanılan Teknolojiler
 
