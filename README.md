@@ -13,7 +13,7 @@
 ## Giriş
 
 Bu çalışmada oyun alanlarında kullanılmak üzere bir socket-io ağ yapısı üzerinde durulmuştur. Bu yapıyla bir oyun alanında kullanılan temassız kartlara ait çeşitli bilgilerin oyun alanındaki bütün birimler tarafından ağ üzerinden paylaşılması ve oyun  alanındaki tüm birimler ile oyuncakların web den erişileibilir (IOT) olması amaçlanmıştır. Büyük bir oyun alanında iki ana eğlence alanından bahsedebiliriz:
-- Oyuncaklar, bireysel olarak kulanılan ve temassız kart okuyucu ile aktif edilebilen çok çeşitli gruplardır. 
+- Oyuncaklar, bireysel olarak kullanılan ve temassız kart okuyucu ile aktif edilebilen çok çeşitli gruplardır. 
 - Birimler olarak tanımladığımız kısım ise, genel olarak soft alanlar olarak adlandırılır ve birden fazla kişinin aynı anda yararlandığı eğlenme yerleridir. Her birimde bir PC bulunur ve üzerinde çalışan program vasıtasıyla birimlere müşteriler temassız kart, nakit ve kredi kartı ödeme seçenekleri ile kabul edilirler. Bu program ayrıca müşterilerin birimde kalma sürelerini de takip ederek çeşitli seçenekler sunar. Günsonunda günlük ciro, masraflar, misafir sayıları vb. konularda raporlama sunarken yaptığı bütün işlemleri web veri tabanına da kaydeder. Böylece web tarafından anlık ciro vb bilgiler görüntülenebilir. Ayrıntılı bilgi için; [Yoyuncak Oyun Alanı Yönetim Sistemi](https://github.com/ilyas9461/yoy-yon-sistemi) 
 
 Bu durumda genel olarak hedeflerimizi şu şekilde ifade edebiliriz:<br>
@@ -59,6 +59,23 @@ Büyük bir oyun alanında ortalama haftalık ziyaretçi sayısı 1000-5000 aras
 
 Sistem mimarisi belirlenirken internet bağlantısının kopması gibi durumlarda düşünülmüştür. Her birimdeki PC verilerini hem kendisine hem de yerelde server PC olarak belirlenen PC'deki veri tabanına kaydetmektedir. Yerelde sistem modem aktif olduğu müddetçe internet bağlantısı olmasa bile kendi içersinde çalışabilmektedir. Birimlerde çalışan programlar web'e veri atarken bir takım gecikme sorunları olabilmekteyken,  programların verileri sadece kendilerine ve yerel server PC'deki veri tabanına atmalarının sağlanması ile de sistem çalışma hızı artmıştır. Server PC'de çalışan yerel server program yerel ağ ile web arasında köprü gibi çalışmaktadır. Her bir birimdeki program yapılan işleme bağlı olarak server PC'de çalışan node-js socket-io server'a belirlenen port üzerinden olay tabanlı bildirimler göndermektedir. Server PC'de çalışan server programda bu bildirimlere abone durumdadır. Gelen olay ve verisine göre gerekli işlemleri yapmaktadır. Olay-veriler socket-io yapısı üzerinden dolaşmaktadır. Web veri tabanına server program verileri göndermektedir. Böylelikle oluşabilecek birtakım güvenlik sorunlarının da önüne geçilmiştir. Başka bir internet bağlantısı üzerinden sisteme dahil olan birimler ise olay-verilerini web de çalışan node-js socket-io server'a göndermektedir. Bu programlar aynı zamanda direkt olarak web veri tabanına veri gönderebilmektedirler. Yerel de çalışan server program web de bulunan socket-io server bildirimlerine de üye durumdadır. Köprü görevini işte bu şekilde görür. Yerel deki olayları aynı zaman da web'e, web'deki olayları da yerele yayınlar. Bu şekilde verilerin iki yönlü paylaşımı sağlanmış olur.
 
+###  Masa Üstü Örnek Test Videosu :
+
+Bu videoda sistemin sözlü anlatımı ve atölye ortamında geliştirme esnasında yapılan test çalışması gösterilmeye çalışılmıştır.
+
+<a href="https://youtu.be/RWEq8n_fpZ4" target="_blank">
+     <img src="https://camo.githubusercontent.com/241d4106ff5edca2ee25e04dcf4546fad9d20b626f7a10990307e8f83e95459f/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f796f75747562652d2532334646303030302e7376673f267374796c653d666f722d7468652d6261646765266c6f676f3d796f7574756265266c6f676f436f6c6f723d7768697465253232" alt="youtube">
+</a>
+
+###  Sahada Uygulama Videosu :
+
+Bu videoda ise, sistem Ankara'da bir AVM içersinde kurulu olan ve 7 adet farklı birim ile müşterilerine hizmet veren bir oyun alanına kurulmuştur. Bu birimlerden bir tanesi (Kum Havuzu) farklı bir internet bağlantısı üzerinden  sisteme dahil olmaktadır. Anlık veri paylaşımları gösterilmeye çalışılmıştır. Sistem veri akışının gerçekleştiği ve istenilen amaçların oluştuğu gözlenmiştir. Sistemde internet bağlantı hızı önemli bir unsursurdur. Bundan dolayı kablosuz modeme yakın birimlerin bağlantıları kablo ile yapılmmıştır. Videoda birimlerde bulunan PC'lere uzaktan bağlantı kurularak gözlemler gerçekleştirilmiştir.
+
+<a href="https://youtu.be/hlyKu-M-aUk" target="_blank">
+     <img src="https://camo.githubusercontent.com/241d4106ff5edca2ee25e04dcf4546fad9d20b626f7a10990307e8f83e95459f/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f796f75747562652d2532334646303030302e7376673f267374796c653d666f722d7468652d6261646765266c6f676f3d796f7574756265266c6f676f436f6c6f723d7768697465253232" alt="youtube">
+</a>
+<br><br>
+
 ## Bölüm 2: Oyuncakların Ağa Dahil Edilmesi:
 ... ...
 
@@ -73,11 +90,7 @@ Sistem mimarisi belirlenirken internet bağlantısının kopması gibi durumlard
 
 ```
 
-###  Masa Üstü Örnek Test Videosu :
 
-<a href="https://youtu.be/RWEq8n_fpZ4" target="_blank">
-     <img src="https://camo.githubusercontent.com/241d4106ff5edca2ee25e04dcf4546fad9d20b626f7a10990307e8f83e95459f/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f796f75747562652d2532334646303030302e7376673f267374796c653d666f722d7468652d6261646765266c6f676f3d796f7574756265266c6f676f436f6c6f723d7768697465253232" alt="youtube">
-</a>
 
 
 ## İletişim
