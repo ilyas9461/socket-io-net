@@ -77,10 +77,10 @@ In this video, the system was installed in a playground in a shopping mall in An
 It has been observed that the system can work integrated with the web even at this density.
 
 
-<a href="https://youtu.be/hlyKu-M-aUk" target="_blank">
+<!-- <a href="https://youtu.be/hlyKu-M-aUk" target="_blank">
       <img src="./img/youtube.png" alt="youtube" width="55">
 </a>
-<br><br>
+<br><br> -->
 
 ## Part 2: Incorporating Toys into the Network:
 ... ...
