@@ -16,7 +16,7 @@ This study focuses on a Socket-io network structure for use in playgrounds. With
 We can talk about two main entertainment areas in a large playground:
 
 - The toys come in various groups that can be used individually and activated with a contactless card reader.
-- Units called soft areas are entertainment areas that more than one person can benefit from at the same time. There is a PC in each unit, and thanks to the program running on it, customers are accepted into the units with contactless card, cash and credit card payment options. This program also tracks customers' length of stay in the unit and offers various options. At the end of the day, daily turnover, expenses, number of guests, etc. While reporting on issues, it also records all transactions in the web database. Thus instant turnover etc. The information can be viewed on the web. 
+- Units called soft areas are entertainment areas that more than one person can benefit from at the same time. There is a PC in each unit, and thanks to the program running on it, customers are accepted into the units with contactless card, cash and credit card payment options. This program also tracks customers' length of stay in the unit and offers various options. At the end of the day, daily turnover, expenses, number of guests, etc. While reporting on problems, it also records all transactions in the web database. Thus, instant turnover and other reports can be viewed instantly on the web.
 For more information; [Yoyuncak Playground Menagement System](https://github.com/ilyas9461/yoy-yon-system) 
 
 In this case, we can generally express our goals as follows:
