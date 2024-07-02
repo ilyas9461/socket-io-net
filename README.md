@@ -1,102 +1,103 @@
 
-<h1 align="center">Local ve WEB Tabanlı Socket-io Ağı</h1>
+<h1 align="center">Local and WEB Based Socket-io Network</h1>
 <h2 align="center">Node JS & Socket io & C# & MySql & Vue3 Composition Api </h1>
 
-<h4 align="left">İÇERİK</h4>
+<h4 align="left">CONTENTS</h4>
 
-- [Giriş](#Giriş)
-- [Sistem Bileşenleri](#Sistem-Bileşenleri)
-- [Çalışma Şekli](#Çalışma-Şekli)
-- [Kullanılan Teknolojiler](#Kullanılan-Teknolojiler)
-- [İletişim](#İletişim)
+- [Introduction](#Introduction)
+- [System Components](#System-Components)
+- [How it works](#How-it-works)
+- [Used technologies](#Used-technologies)
 
-## Giriş
+## introduction
 
-Bu çalışmada oyun alanlarında kullanılmak üzere bir socket-io ağ yapısı üzerinde durulmuştur. Bu yapıyla bir oyun alanında kullanılan temassız kartlara ait çeşitli bilgilerin oyun alanındaki bütün birimler tarafından ağ üzerinden paylaşılması ve oyun  alanındaki tüm birimler ile oyuncakların web den erişileibilir (IOT) olması amaçlanmıştır. Büyük bir oyun alanında iki ana eğlence alanından bahsedebiliriz:
-- Oyuncaklar, bireysel olarak kullanılan ve temassız kart okuyucu ile aktif edilebilen çok çeşitli gruplardır. 
-- Birimler olarak tanımladığımız kısım ise, genel olarak soft alanlar olarak adlandırılır ve birden fazla kişinin aynı anda yararlandığı eğlenme yerleridir. Her birimde bir PC bulunur ve üzerinde çalışan program vasıtasıyla birimlere müşteriler temassız kart, nakit ve kredi kartı ödeme seçenekleri ile kabul edilirler. Bu program ayrıca müşterilerin birimde kalma sürelerini de takip ederek çeşitli seçenekler sunar. Günsonunda günlük ciro, masraflar, misafir sayıları vb. konularda raporlama sunarken yaptığı bütün işlemleri web veri tabanına da kaydeder. Böylece web tarafından anlık ciro vb bilgiler görüntülenebilir. Ayrıntılı bilgi için; [Yoyuncak Oyun Alanı Yönetim Sistemi](https://github.com/ilyas9461/yoy-yon-sistemi) 
+This study focuses on a Socket-io network structure for use in playgrounds. With this structure, it is aimed to share various information about the contactless cards used in the playground by all units in the playground over the network and to make all units and toys in the playground accessible via the web (IOT).
 
-Bu durumda genel olarak hedeflerimizi şu şekilde ifade edebiliriz:<br>
+We can talk about two main entertainment areas in a large playground:
 
-- Oyun alanındaki tüm birimler ve oyuncaklar tarafından temassız kart bilgilerinin paylaşılması.
-- Temassız kartın müşteri bilgilerinin tüm birimler tarafından paylaşılması.
-- Tüm birimlerde yapılan işlemlerin ağ üzerinde anlık olarak gözlenebilmesi.
-- Web üzerinden tüm birimlerdeki işlemlerin anlık takibi.
-- Web-yerel üzerinden oyuncaklar ve üniteler ile ilgili çeşitli ayarların uzaktan yapılması.
-- Birimlere müşteri kaydının web ve mobil üzerinden yapılabilmesinin sağlanması.
-- Web-yerel üzerinden oyuncakların uzaktan çalıştırılmasının sağlanması.
+-The toys come in various groups that can be used individually and activated with a contactless card reader.
+- Units called soft areas are entertainment areas that more than one person can benefit from at the same time. There is a PC in each unit, and thanks to the program running on it, customers are accepted into the units with contactless card, cash and credit card payment options. This program also tracks customers' length of stay in the unit and offers various options. At the end of the day, daily turnover, expenses, number of guests, etc. While reporting on issues, it also records all transactions in the web database. Thus instant turnover etc. The information can be viewed on the web. 
+For more information; [Yoyuncak Playground Menagement System](https://github.com/ilyas9461/yoy-yon-system) 
 
-Bu sistem daha önce çalıştığımız ve şu anda piyasada çeşitli yerlerdeki (11 farklı oyun alanı ve yaklaşık 25 PC'de) oyun alanlarında kullanılmakta olan [Yoyuncak Oyun Alanı Yönetim Sistemi](https://github.com/ilyas9461/yoy-yon-sistemi) (V2) üzerine inşa edilmiştir. 
+In this case, we can generally express our goals as follows:
+<br>
 
-Büyük bir oyun alanında bulunabilecek bazı oyun alanı eğelence merkezlerini şu şekilde listeleyebiliriz:
-- Soft Alanlar : Bunlar çeşitli büyüklükteki top havuzları ve kum havuzları olabilir
-- Kiddy Rides oyuncaklar : Çocuklara hitap eden oyuncaklardır.
-- Ekranlı Oyuncaklar : Bir PC üzeride çalışabilen oyuncaklardır.
-- Peluş oyuncaklar.
-- Tırmanma duvarları.
-- Akülü arabalar, çarpışan arabalar.
+- Sharing of contactless card information by all units and toys in the playground.
+- Sharing of contactless card customer information by all units.
+- Transactions made in all units can be observed instantly on the network.
+- Instant tracking of transactions in all units via the web.
+- Remote adjustment of various settings regarding toys and units via web/local.
+- Ensuring that customer registration to units can be made via web and mobile.
+- Providing remote operation of toys via web/local.
+
+This system is [Yoyuncak Playground Management System](https://github.com/ilyas9461/yoy-yon-system), which we have worked with before and is currently used in playgrounds in various places on the market (11 different playgrounds and approximately 25 PCs). ) is built on (V2).
+
+We can list some playground entertainment centers that can be found in a large playground as follows:
+- Soft Areas: These can be ball pits and sandboxes of various sizes
+- Kiddy Rides toys: These are toys that appeal to children.
+- Screen Toys: These are toys that can run on a PC and big screen.
+- Plush toys.
+- Climbing walls.
+- Battery-powered cars, bumper cars.
 - ...
 
-Bir oyun alanında bunlardan çok sayıda olabilir. Bu tür alanlarda genellikle müşteriler temassız karta yüklenen kontür ile bir oyuncağı çalıştırır veya bir oyun alanına giriş yaparlar. Geliştirmiş olduğumuz sistemimiz özetle bu oyun alanlarında farklı fiyat-süre seçeneklerini müşteriye sunarak müşterinin oyun alanında kalma süresini takip etmektedir. Aynı zamanda bütün ödemeleri temassız karta yüklenen kontürleden veya nakit-kredi kartı üzerinden alabilmektedir. Genel olarak bir veya daha fazla kart yükleme noktsından temassız kartlar kontur yüklenmekte ve diğer yerlerde bu temassız kartlar kullanılmaktadır. Dolayısıyla temassız kartlar sistemin en önemli bileşenidir. Bu alt yapıya entegre ettiğimiz yeni özelliklerle de sistem bileşenleri şu şeklide olmaktadır;
+There can be many of these on a playground. In such areas, customers usually operate a toy or enter a playground with the credits loaded onto the contactless card. In summary, the system we have developed tracks the customer's stay in the playground by offering different price-duration options to the customer in these playgrounds. At the same time, all payments can be made from the credits loaded on the contactless card or by cash or credit card. Generally, contactless cards are loaded from one or more card loading points and these contactless cards are used in other places. Therefore, contactless cards are the most important component of the system. With the new features we have integrated into this infrastructure, the system components are as follows;
 
 <p  align="center">
 <img src="img/system-structure.png" alt="pelus" width="100%" style="margin-left:10px">
 </p>
 
-## Sockete-IO Ağı Sistem Bileşenleri :
-### 1- Kartlı sistem jeton kanalı yükleme cihazı (PIC24F)
-### 2- Kartlı sistem jeton kanalları (PIC24F) [Video ...](https://www.youtube.com/watch?v=HQXXSq4kj5s)
-### 3- Oyun alanı yönetim programı V3. (C#)
-### 4- Node-JS local server ve socket-io. [yoy-io-server-local](https://github.com/ilyas9461/yoy-io-server-local)
+## System Components :
+### 1- Card system coin channel loading device (PIC24F)
+### 2- Card system token channels(PIC24F) [Video ...](https://www.youtube.com/watch?v=HQXXSq4kj5s)
+### 3- Playground management program V3. (C#)
+### 4- Node-JS local server and socket-io. [yoy-io-server-local](https://github.com/ilyas9461/yoy-io-server-local)
 ### 5- Server program (c#)[YOY-Socket-ServerV1](https://github.com/ilyas9461/YOY-Socket-ServerV1)
-### 6- Web tarafında çalışan uzak server Node-JS ve Socket-io [yoy-io-server-cloud ](https://github.com/ilyas9461/yoy-io-server-cloud)
-### 7- VUE3 ile hazırlanmış Dashboard.
-### 8- Wireless modüller (ESP8266) [socket-io-study](https://github.com/ilyas9461/iot-study)
+### 6- Remote server running on the web side Node-JS and Socket-io [yoy-io-server-cloud ](https://github.com/ilyas9461/yoy-io-server-cloud)
+### 7- Dashboard prepared with VUE3.
+### 8- Wireless modules (ESP8266) [socket-io-study](https://github.com/ilyas9461/iot-study)
 
-## Çalışma Şekli
-## Bölüm 1 : Kart Bilgilerinin Yerel ve Uzak Birimler Tarafından Paylaşılması:
-Büyük bir oyun alanında ortalama haftalık ziyaretçi sayısı 3000-7000 arasında değişebilmektedir. Yoğun zamanlarda bir alana birden fazla PC konulabilmektedir. Örneğin iki veya daha fazla kart yükleme noktası oluşturduğunuz zaman kartların deposito durumları PC'ler arasında paylaşılmazsa PC'ler arasında kartlar birbirine karışmaktadır. Çok yoğun bir zamanda müşteriye ait bilgilerin her alanda tekrar takip programına girilmesi kuyrukların oluşmasına sebep olmaktadır. Kartlarda meydana gelen çeşitli arızaların (kontür silinmesi, oyuncağın kontürü çekip çalışmaması vb.) hangi alanda yada oyuncakta ne zaman meydana geldiğinin tespiti telafi yüklemelerinde işletmeci açısından önem arzetmektedir. Ayrıca işletmeci bir AVM ile anlaştı ise AVM işletmeciye farklı noktalarda yerler verebilmektedir. Bu durumda da kart bilgilerinin paylaşılabilir olması müşteri memnuniyeti ve artması için önemli hale gelmektedir. Bu sistemle kartlar için siyah liste oluşturulabilir ve kartın kullanımı sistemden kaldıralılabilir. Böylelikle kayıp-çalıntı kartın kullanımının da önüne geçilebilir.
+## How it works
+## Part 1: Sharing Card Information by Local and Remote Units:
+The average weekly number of visitors in a large playground can vary between 3000-7000. During busy times, more than one PC can be placed in one area. For example, when you create two or more card loading points, if the deposit status of the cards is not shared between the PCs, the cards will get mixed up between the PCs. Re-entering customer information into the tracking program in every area during a very busy time causes queues to form. It is important for the operator to determine in which area or when the various malfunctions on the cards (contours being erased, the toy pulling the contours and not working, etc.) occurred in the toy or in which area it occurred, in compensatory loadings. In addition, if the operator has an agreement with a shopping mall, the shopping mall can give locations to the operator at different points. In this case, sharing card information becomes important for customer satisfaction and its increase. With this system, a blacklist can be created for cards and the use of the card can be removed from the system. In this way, the use of lost or stolen cards can be prevented.
 
-Sistem mimarisi belirlenirken internet bağlantısının kopması gibi durumlarda düşünülmüştür. Her birimdeki PC verilerini hem kendisine hem de yerelde server PC olarak belirlenen PC'deki veri tabanına kaydetmektedir. Yerelde sistem modem aktif olduğu müddetçe internet bağlantısı olmasa bile kendi içersinde çalışabilmektedir. Birimlerde çalışan programlar web'e veri atarken bir takım gecikme sorunları olabilmekteyken,  programların verileri sadece kendilerine ve yerel server PC'deki veri tabanına atmalarının sağlanması ile de sistem çalışma hızı artmıştır. Server PC'de çalışan yerel server program yerel ağ ile web arasında köprü gibi çalışmaktadır. Her bir birimdeki program yapılan işleme bağlı olarak server PC'de çalışan node-js socket-io server'a belirlenen port üzerinden olay tabanlı bildirimler göndermektedir. Server PC'de çalışan server programda bu bildirimlere abone durumdadır. Gelen olay ve verisine göre gerekli işlemleri yapmaktadır. Olay-veriler socket-io yapısı üzerinden dolaşmaktadır. Web veri tabanına server program verileri göndermektedir. Böylelikle oluşabilecek birtakım güvenlik sorunlarının da önüne geçilmiştir. Başka bir internet bağlantısı üzerinden sisteme dahil olan birimler ise olay-verilerini web de çalışan node-js socket-io server'a göndermektedir. Bu programlar aynı zamanda direkt olarak web veri tabanına veri gönderebilmektedirler. Yerel de çalışan server program web de bulunan socket-io server bildirimlerine de üye durumdadır. Köprü görevini işte bu şekilde görür. Yerel deki olayları aynı zaman da web'e, web'deki olayları da yerele yayınlar. Bu şekilde verilerin iki yönlü paylaşımı sağlanmış olur.
+While determining the system architecture, situations such as internet connection loss were taken into consideration. It saves the PC data in each unit both to itself and to the database on the local PC designated as the server PC. Locally, the system can operate on its own even if there is no internet connection, as long as the modem is active. While programs running in the units may experience some delay problems when sending data to the web, the system operating speed has increased by ensuring that the programs only send data to themselves and to the database on the local server PC. The local server program running on the Server PC works like a bridge between the local network and the web. Depending on the operation performed, the program in each unit sends event-based notifications to the node-js socket-io server running on the server PC through the specified port. The server program running on the Server PC is subscribed to these notifications. It takes the necessary actions according to the incoming event and data. Event data travels through the socket-io structure. The server program sends data to the web database. In this way, some security problems that may occur are prevented. The units included in the system via another internet connection send the event data to the node-js socket-io server running on the web. These programs can also send data directly to the web database. The server program running locally is also a member of the socket-io server notifications on the web. This is how the bridge functions. It also broadcasts local events to the web, and web events to the local. In this way, two-way sharing of data is ensured.
 
-###  Masa Üstü Örnek Test Videosu :
+###  Desktop Sample Test Video :
 
-Bu videoda sistemin sözlü anlatımı ve atölye ortamında geliştirme esnasında yapılan test çalışması gösterilmeye çalışılmıştır.
+In this video, an attempt is made to show the verbal explanation of the system and the test work carried out during development in the workshop environment.
 
 <a href="https://youtu.be/RWEq8n_fpZ4" target="_blank">
-     <img src="https://camo.githubusercontent.com/241d4106ff5edca2ee25e04dcf4546fad9d20b626f7a10990307e8f83e95459f/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f796f75747562652d2532334646303030302e7376673f267374796c653d666f722d7468652d6261646765266c6f676f3d796f7574756265266c6f676f436f6c6f723d7768697465253232" alt="youtube">
+     <img src="./img/youtube.png" alt="youtube" width="55">
 </a>
 
-###  Sahada Uygulama Videosu :
+###  Field Application Video :
 
-Bu videoda ise, sistem Ankara'da bir AVM içersinde kurulu olan ve 7 adet farklı birim ile müşterilerine hizmet veren bir oyun alanına kurulmuştur. Bu birimlerden bir tanesi (Kum Havuzu) farklı bir internet bağlantısı üzerinden  sisteme dahil olmaktadır. Anlık veri paylaşımları gösterilmeye çalışılmıştır. Sistem veri akışının gerçekleştiği ve istenilen amaçların oluştuğu gözlenmiştir. Videoda birimlerde bulunan PC'lere uzaktan bağlantı kurularak gözlemler gerçekleştirilmiştir. Sistemin kurulu olduğu AVM'deki oyun alanında aylık ortalama ziyaretçi sayısı 10000'leri bulmaktadır özellikle hafta sonları ziyaretçi yoğunluğu bir günde hafta içindeki kadar olabilmektedir.
-Sistemin bu yoğunlukta bile web ile entegre şekilde çalışabildiği görülmüştür.
+In this video, the system was installed in a playground in a shopping mall in Ankara, serving its customers with 7 different units. One of these units (Sand Pool) is included in the system via a different internet connection. An attempt has been made to show instant data sharing. It has been observed that the system data flow is realized and the desired purposes are achieved. In the video, observations were made by connecting remotely to the PCs in the units. The average number of visitors per month in the playground in the shopping mall where the system is installed reaches 10,000. Especially on weekends, the visitor density can be as much as during the week in one day.
+It has been observed that the system can work integrated with the web even at this density.
 
 
 <a href="https://youtu.be/hlyKu-M-aUk" target="_blank">
-     <img src="https://camo.githubusercontent.com/241d4106ff5edca2ee25e04dcf4546fad9d20b626f7a10990307e8f83e95459f/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f796f75747562652d2532334646303030302e7376673f267374796c653d666f722d7468652d6261646765266c6f676f3d796f7574756265266c6f676f436f6c6f723d7768697465253232" alt="youtube">
+      <img src="./img/youtube.png" alt="youtube" width="55">
 </a>
 <br><br>
 
-## Bölüm 2: Oyuncakların Ağa Dahil Edilmesi:
+## Part 2: Incorporating Toys into the Network:
 ... ...
 
-## Kullanılan Teknolojiler
+## Used technologies
 
 ```bash
 - C#, SocketIOClient
 - Node js, Expres, socket-io 4.x
 - MySql
-- PICC, PIC24F
-- ESP8266
-- MIFARE Temassız Kartlar
+- PICC compiler, PIC24F Microcontroller
+- ESP8266 Microcontroller
+- MIFARE Contactless Cards
 
 ```
 
 
-
-
-## İletişim
 
 - GitHub [@your-ilyas9461](https://github.com/ilyas9461)
 - Linkedin [@your-linkedin](https://www.linkedin.com/in/ilyas-yagcioglu/)
