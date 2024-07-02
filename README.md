@@ -47,7 +47,7 @@ There can be many of these on a playground. In such areas, customers usually ope
 <img src="img/system-structure.png" alt="pelus" width="100%" style="margin-left:10px">
 </p>
 
-## System Components :
+## System Components
 ### 1- Card system coin channel loading device (PIC24F)
 ### 2- Card system token channels(PIC24F) [Video ...](https://www.youtube.com/watch?v=HQXXSq4kj5s)
 ### 3- Playground management program V3. (C#)
