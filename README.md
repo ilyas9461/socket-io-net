@@ -92,7 +92,7 @@ It has been observed that the system can work integrated with the web even at th
 - Node js, Expres, socket-io 4.x
 - MySql
 - PICC compiler, PIC24F Microcontroller
-- ESP8266 Microcontroller
+- ESP8266 Microcontroller for wireless communication.
 - MIFARE Contactless Cards
 
 ```
